@@ -1,5 +1,5 @@
 {
-  "homepage": "https://yauheni33.github.io/prelending",
+  "homepage": "https://Yauheni33.github.io/prelending",
   "name": "prelending",
   "version": "0.1.0",
   "private": true,
@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy" : "react-scripts build",
+    "predeploy" : "npm run build",
     "deploy" : "gh-pages -d build"
   },
   "eslintConfig": {
