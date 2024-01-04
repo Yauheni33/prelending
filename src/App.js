@@ -70,6 +70,20 @@ function App() {
   const [counter, setCounter] = useState(0);
   const [step, setStep] = useState(0)
   const [isShowedModal, setIsShowedModal] = useState(false)
+  const [isClickCTAButton, setIsClickSTAButton] = useState(false)
+
+  const leaveFromPage = () => {
+    !isClickCTAButton && window.gtag('event', 'open_prelending', {
+      'isLeaveFromPage': true, step
+    })
+  }
+
+  useEffect(() => {
+    window.addEventListener("beforeunload", leaveFromPage);
+    window.gtag('event', 'open_prelending')
+
+    return () => window.removeEventListener("beforeunload", leaveFromPage);
+  }, [])
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -96,11 +110,19 @@ function App() {
     return <h1 className='title-text'>Parece que você precisa de um pouco mais de sorte no futebol. Mas não se preocupe, o amor pelo seu time pode mudar tudo! Siga o link e, com um bônus de R$30000, sua sorte vai mudar na próxima vez!</h1>
   }
 
+  const openOffer = () => {
+    !isClickCTAButton && window.gtag('event', 'open_prelending', {
+      step, isFinished
+    })
+    setIsClickSTAButton(true)
+    window.open('https://l8quo.bemobtrcks.com/click', '_blank')
+  }
+
   const finishButton = (
     <Button
       variant="contained"
       {...(isFinished && { size: "large", color: "success" })}
-      onClick={() => window.open('https://l8quo.bemobtrcks.com/click', '_blank')}
+      onClick={openOffer}
     >
       Receber o bônus
     </Button>
