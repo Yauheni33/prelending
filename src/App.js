@@ -73,7 +73,7 @@ function App() {
   const [isClickCTAButton, setIsClickSTAButton] = useState(false)
 
   const leaveFromPage = () => {
-    !isClickCTAButton && window.gtag('event', 'open_prelending', {
+    !isClickCTAButton && window.gtag('event', 'leave_page', {
       'isLeaveFromPage': true, step
     })
   }
@@ -111,7 +111,7 @@ function App() {
   }
 
   const openOffer = () => {
-    !isClickCTAButton && window.gtag('event', 'open_prelending', {
+    !isClickCTAButton && window.gtag('event', 'open_offer', {
       step, isFinished
     })
     setIsClickSTAButton(true)
