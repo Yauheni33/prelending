@@ -96,6 +96,16 @@ function App() {
     return <h1 className='title-text'>Parece que você precisa de um pouco mais de sorte no futebol. Mas não se preocupe, o amor pelo seu time pode mudar tudo! Siga o link e, com um bônus de R$30000, sua sorte vai mudar na próxima vez!</h1>
   }
 
+  const finishButton = (
+    <Button
+      variant="contained"
+      {...(isFinished && { size: "large", color: "success" })}
+      onClick={() => window.open('https://l8quo.bemobtrcks.com/click', '_blank')}
+    >
+      Receber o bônus
+    </Button>
+  )
+
   return (
     <div className="App">
       <div className="container">
@@ -128,7 +138,12 @@ function App() {
           )
         }
         {
-          isFinished && finishContent()
+          isFinished && (
+            <div>
+              { finishContent() }
+              { finishButton }
+            </div>
+          )
         }
         <h1 className='counter'>placar: {counter} / {randomVideos.length}</h1>
       </div>
@@ -144,6 +159,7 @@ function App() {
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             <Button onClick={() => checkGoal(true)}>Sim</Button>
             <Button onClick={() => checkGoal(false)}>Não</Button>
+            { finishButton }
           </Typography>
         </Box>
       </Modal>
